@@ -9,7 +9,7 @@ import {
 } from "next-auth/react";
 
 function Checkout() {
-  const session = useSession();
+  const { data: session } = useSession();
   const items = useSelector(selectItems);
   const total = useSelector(selectTotal);
 
@@ -64,10 +64,10 @@ function Checkout() {
             </h2>
 
             <button 
-              disabled={!session.data}
-              className={`button mt-2 ${!session.data && `from-gray-300 to-gray-500 border-gray-200 text-gray-300 active:from-gray-300 cursor-not-allowed`}`}
+              disabled={!session}
+              className={`button mt-2 ${!session && `from-gray-300 to-gray-500 border-gray-200 text-gray-300 active:from-gray-300 cursor-not-allowed`}`}
             >
-              {!session.data
+              {!session
                ? 'Sign in to Checkout'
                : 'Proceed to Checkout'
               }

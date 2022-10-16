@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 import { selectItems } from "../slices/basketSlice";
 
 function Header() {
-  const session = useSession();
+  const { data: session } = useSession();
   const router = useRouter();
   const items = useSelector(selectItems);
 
@@ -48,9 +48,9 @@ function Header() {
         <div className="text-white flex items-center text-xs space-x-6 mx-6">
 
           {/* User Info */}
-          <div onClick={!session.data ? signIn : signOut} className="link">
+          <div onClick={!session ? ()=>signIn() : ()=>signOut()} className="link">
             <p className="hover:underline">
-              {session.data ? `Hello, ${session.data?.user.name}` : "Sign In"}
+              {session ? `Hello, ${session?.user.name}` : "Sign In"}
             </p>
             <p className="font-extrabold md:text-sm">Account & List</p>
           </div>
