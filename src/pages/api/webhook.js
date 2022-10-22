@@ -2,7 +2,11 @@ import { buffer } from "micro"
 import * as admin from "firebase-admin";
 
 //Secure connection to Firebase from the backend
-const serviceAccout = require('../../../firebase_sa.json');
+const serviceAccout = {
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+  privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+}
 const app = !admin.apps.length
   ? admin.initializeApp({
     credential: admin.credential.cert(serviceAccout),
