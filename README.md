@@ -1,6 +1,6 @@
 # Show Case
 - Top
-![Show ase](showcase.jpg?raw=true "show case")
+![Show Case](showcase.jpg?raw=true "show case")
 
 # Installation Steps
 
