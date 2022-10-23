@@ -21,8 +21,8 @@ export default async (req, res) => {
     payment_method_types:["card"],
     line_items: transformedItems,
     mode: 'payment',
-    success_url: `${process.env.HOST}/success`,
-    cancel_url: `${process.env.HOST}/checkout`,
+    success_url: `${process.env.NEXTAUTH_URL}/success`,
+    cancel_url: `${process.env.NEXTAUTH_URL}/checkout`,
     metadata: {
       email,
       images: JSON.stringify(items.map(item => item.image))
